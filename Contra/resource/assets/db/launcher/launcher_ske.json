@@ -1,0 +1,198 @@
+{
+    "frameRate": 24,
+    "version": "4.5",
+    "armature": [
+        {
+            "frameRate": 24,
+            "ik": [],
+            "animation": [
+                {
+                    "frame": [],
+                    "duration": 8,
+                    "ffd": [],
+                    "name": "start",
+                    "bone": [
+                        {
+                            "name": "Layer 2",
+                            "frame": [
+                                {
+                                    "tweenEasing": 0,
+                                    "duration": 1,
+                                    "transform": {}
+                                },
+                                {
+                                    "tweenEasing": 0,
+                                    "duration": 6,
+                                    "transform": {}
+                                },
+                                {
+                                    "tweenEasing": 0,
+                                    "duration": 1,
+                                    "transform": {}
+                                },
+                                {
+                                    "tweenEasing": null,
+                                    "duration": 0,
+                                    "transform": {}
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Layer 1",
+                            "frame": [
+                                {
+                                    "tweenEasing": 0,
+                                    "duration": 8,
+                                    "transform": {}
+                                },
+                                {
+                                    "tweenEasing": null,
+                                    "duration": 0,
+                                    "transform": {
+                                        "scX": 2.65,
+                                        "scY": 2.65,
+                                        "x": -64
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "name": "root",
+                            "frame": [
+                                {
+                                    "tweenEasing": null,
+                                    "duration": 8,
+                                    "transform": {}
+                                }
+                            ]
+                        }
+                    ],
+                    "slot": [
+                        {
+                            "name": "Layer 2",
+                            "frame": [
+                                {
+                                    "tweenEasing": 0,
+                                    "duration": 1,
+                                    "color": {}
+                                },
+                                {
+                                    "tweenEasing": 0,
+                                    "duration": 6,
+                                    "color": {}
+                                },
+                                {
+                                    "tweenEasing": 0,
+                                    "duration": 1,
+                                    "color": {
+                                        "aM": 0
+                                    }
+                                },
+                                {
+                                    "tweenEasing": null,
+                                    "duration": 0,
+                                    "color": {},
+                                    "displayIndex": -1
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Layer 1",
+                            "frame": [
+                                {
+                                    "tweenEasing": 0,
+                                    "duration": 8,
+                                    "color": {}
+                                },
+                                {
+                                    "tweenEasing": null,
+                                    "duration": 0,
+                                    "color": {
+                                        "aM": 0
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "slot": [
+                {
+                    "name": "Layer 2",
+                    "parent": "Layer 2"
+                },
+                {
+                    "z": 1,
+                    "name": "Layer 1",
+                    "parent": "Layer 1"
+                }
+            ],
+            "skin": [
+                {
+                    "name": "",
+                    "slot": [
+                        {
+                            "display": [
+                                {
+                                    "type": "image",
+                                    "transform": {
+                                        "y": 0.05,
+                                        "x": 0.05
+                                    },
+                                    "name": "launcherAssets/g"
+                                }
+                            ],
+                            "name": "Layer 2"
+                        },
+                        {
+                            "display": [
+                                {
+                                    "type": "image",
+                                    "transform": {
+                                        "y": 0.1,
+                                        "x": 0.05
+                                    },
+                                    "name": "launcherAssets/元件 16"
+                                }
+                            ],
+                            "name": "Layer 1"
+                        }
+                    ]
+                }
+            ],
+            "defaultActions": [
+                {
+                    "gotoAndPlay": "start"
+                }
+            ],
+            "type": "Armature",
+            "name": "launcher",
+            "bone": [
+                {
+                    "transform": {},
+                    "name": "root"
+                },
+                {
+                    "transform": {
+                        "scX": 2.78,
+                        "y": -2.2,
+                        "scY": 1.75,
+                        "x": -1.95
+                    },
+                    "name": "Layer 2",
+                    "parent": "root"
+                },
+                {
+                    "transform": {
+                        "y": 2.25,
+                        "x": -7.75
+                    },
+                    "name": "Layer 1",
+                    "parent": "root"
+                }
+            ]
+        }
+    ],
+    "name": "launcher",
+    "isGlobal": 0
+}

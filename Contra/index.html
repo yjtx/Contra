@@ -28,6 +28,11 @@
 	<script egret="lib" src="libs/modules/game/game.web.js" src-release="libs/modules/game/game.web.min.js"></script>
 	<script egret="lib" src="libs/modules/tween/tween.js" src-release="libs/modules/tween/tween.min.js"></script>
 	<script egret="lib" src="libs/modules/res/res.js" src-release="libs/modules/res/res.min.js"></script>
+	<script egret="lib" src="libs/modules/dragonBones/dragonBones.js" src-release="libs/modules/dragonBones/dragonBones.min.js"></script>
+	<script egret="lib" src="libs/modules/puremvc/puremvc.js" src-release="libs/modules/puremvc/puremvc.min.js"></script>
+	<script egret="lib" src="libs/modules/utils/utils.js" src-release="libs/modules/utils/utils.min.js"></script>
+	<script egret="lib" src="libs/modules/map/map.js" src-release="libs/modules/map/map.min.js"></script>
+	<script egret="lib" src="libs/modules/rocker/rocker.js" src-release="libs/modules/rocker/rocker.min.js"></script>
 	<!--modules_files_end-->
 
     <!--这个标签为不通过egret提供的第三方库的方式使用的 javascript 文件，请将这些文件放在libs下，但不要放在modules下面。-->
@@ -38,15 +43,48 @@
     <!--game_files_start-->
 	<script egret="game" src="bin-debug/LoadingUI.js"></script>
 	<script egret="game" src="bin-debug/Main.js"></script>
-	<script egret="game" src="bin-debug/controller/Direction.js"></script>
-	<script egret="game" src="bin-debug/controller/KeyBoardCtr.js"></script>
-	<script egret="game" src="bin-debug/controller/TouchCtr.js"></script>
-	<script egret="game" src="bin-debug/road/Map.js"></script>
-	<script egret="game" src="bin-debug/road/RoadPoint.js"></script>
-	<script egret="game" src="bin-debug/role/Animation.js"></script>
-	<script egret="game" src="bin-debug/role/Role.js"></script>
-	<script egret="game" src="bin-debug/role/Enemy.js"></script>
-	<script egret="game" src="bin-debug/role/Tank.js"></script>
+	<script egret="game" src="bin-debug/command/CreateBombCMD.js"></script>
+	<script egret="game" src="bin-debug/command/CreateBulletCMD.js"></script>
+	<script egret="game" src="bin-debug/command/MapInitCommand.js"></script>
+	<script egret="game" src="bin-debug/effects/Effect.js"></script>
+	<script egret="game" src="bin-debug/factory/ItemFactory.js"></script>
+	<script egret="game" src="bin-debug/road/AAAProxy.js"></script>
+	<script egret="game" src="bin-debug/road/ExploededMediator.js"></script>
+	<script egret="game" src="bin-debug/road/MapAnalysis.js"></script>
+	<script egret="game" src="bin-debug/road/MapMediator.js"></script>
+	<script egret="game" src="bin-debug/road/WarMap.js"></script>
+	<script egret="game" src="bin-debug/road/WarProxy.js"></script>
+	<script egret="game" src="bin-debug/rocker/Rocker.js"></script>
+	<script egret="game" src="bin-debug/role/base/BaseItem.js"></script>
+	<script egret="game" src="bin-debug/role/Headquarter.js"></script>
+	<script egret="game" src="bin-debug/role/HeadquarterMediator.js"></script>
+	<script egret="game" src="bin-debug/role/IRunningVO.js"></script>
+	<script egret="game" src="bin-debug/role/Stone.js"></script>
+	<script egret="game" src="bin-debug/role/base/Animation.js"></script>
+	<script egret="game" src="bin-debug/role/base/BaseVO.js"></script>
+	<script egret="game" src="bin-debug/role/base/ResourceVO.js"></script>
+	<script egret="game" src="bin-debug/role/base/RunningItem.js"></script>
+	<script egret="game" src="bin-debug/role/bullet/Bullet.js"></script>
+	<script egret="game" src="bin-debug/role/bullet/BulletVO.js"></script>
+	<script egret="game" src="bin-debug/role/bullet/FBullet.js"></script>
+	<script egret="game" src="bin-debug/role/bullet/FireBullet.js"></script>
+	<script egret="game" src="bin-debug/role/bullet/LightBullet.js"></script>
+	<script egret="game" src="bin-debug/role/bullet/MagneticBullet.js"></script>
+	<script egret="game" src="bin-debug/role/bullet/Mine.js"></script>
+	<script egret="game" src="bin-debug/role/bullet/Missile.js"></script>
+	<script egret="game" src="bin-debug/role/bullet/MissileVO.js"></script>
+	<script egret="game" src="bin-debug/role/bullet/NuclearBomb.js"></script>
+	<script egret="game" src="bin-debug/role/tank/IntelligentExt.js"></script>
+	<script egret="game" src="bin-debug/role/tank/MainHeroExt.js"></script>
+	<script egret="game" src="bin-debug/role/tank/Shadow.js"></script>
+	<script egret="game" src="bin-debug/role/tank/Tank.js"></script>
+	<script egret="game" src="bin-debug/role/tank/TankMediator.js"></script>
+	<script egret="game" src="bin-debug/role/tank/TankVO.js"></script>
+	<script egret="game" src="bin-debug/role/tower/MagneticTower.js"></script>
+	<script egret="game" src="bin-debug/role/tower/MagneticTowerVO.js"></script>
+	<script egret="game" src="bin-debug/role/tower/Tower.js"></script>
+	<script egret="game" src="bin-debug/role/tower/TowerMediator.js"></script>
+	<script egret="game" src="bin-debug/test/MapTest.js"></script>
 	<!--game_files_end-->
 </head>
 <body>
@@ -54,17 +92,18 @@
     <div style="margin: auto;width: 100%;height: 100%;" class="egret-player"
          data-entry-class="Main"
          data-orientation="landscape"
-         data-scale-mode="showAll"
+         data-scale-mode="fixedHeight"
          data-frame-rate="30"
-         data-content-width="800"
-         data-content-height="480"
+         data-content-width="960"
+         data-content-height="640"
          data-show-paint-rect="false"
          data-multi-fingered="2"
-         data-show-fps="false" data-show-log="false"
-         data-log-filter="" data-show-fps-style="x:0,y:0,size:30,textColor:0x00c200,bgAlpha:0.9">
+         data-show-fps="true" data-show-log="true"
+         data-log-filter="" data-show-fps-style="x:0,y:0,size:12,textColor:0x00c200,bgAlpha:0.9">
     </div>
     <script>
-        egret.runEgret({renderMode:"canvas"});
+        egret.runEgret({renderMode:"webgl"});
+        // egret.runEgret({renderMode:"canvas"});
     </script>
 </body>
 </html>

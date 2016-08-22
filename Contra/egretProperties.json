@@ -1,25 +1,45 @@
 {
-  "native": {
-    "path_ignore": []
-  },
-  "publish": {
-    "web": 0,
-    "native": 1,
-    "path": "bin-release"
-  },
-  "egret_version": "3.0.6",
-  "modules": [
-    {
-      "name": "egret"
-    },
-    {
-      "name": "game"
-    },
-    {
-      "name": "tween"
-    },
-    {
-      "name": "res"
-    }
-  ]
+	"native": {
+		"path_ignore": [],
+		"android_path": "../AndTank"
+	},
+	"publish": {
+		"web": 0,
+		"native": 1,
+		"path": "bin-release"
+	},
+	"egret_version": "3.1.4",
+	"modules": [
+		{
+			"name": "egret"
+		},
+		{
+			"name": "game"
+		},
+		{
+			"name": "tween"
+		},
+		{
+			"name": "res"
+		},
+		{
+			"name": "dragonBones"
+		},
+		{
+			"name": "puremvc",
+			"path": "../../game_libs/puremvc"
+		},
+		{
+			"name": "utils",
+			"path": "../../game_libs/Utils/"
+		},
+		{
+			"name": "map",
+			"path": "../../game_libs/GridMap"
+		},
+		{
+			"name": "rocker",
+			"path": "../../game_libs/Rocker"
+		}
+	]
 }

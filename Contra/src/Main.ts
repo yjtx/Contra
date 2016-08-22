@@ -45,6 +45,7 @@ class Main extends egret.DisplayObjectContainer {
         //Config to load process interface
         this.loadingView = new LoadingUI();
         this.stage.addChild(this.loadingView);
+        this.loadingView.createView();
 
         //初始化Resource资源加载库
         //initiate Resource loading library
@@ -117,176 +118,86 @@ class Main extends egret.DisplayObjectContainer {
      * Create a game scene
      */
     private createGameScene():void {
-        var sky:egret.Bitmap = this.createBitmapByName("bgImage");
-        this.addChild(sky);
-        var stageW:number = this.stage.stageWidth;
-        var stageH:number = this.stage.stageHeight;
-        sky.width = stageW;
-        sky.height = stageH;
-
-        var topMask:egret.Shape = new egret.Shape();
-        topMask.graphics.beginFill(0x000000, 0.5);
-        topMask.graphics.drawRect(0, 0, stageW, stageH);
-        topMask.graphics.endFill();
-        topMask.width = stageW;
-        topMask.height = stageH;
-        this.addChild(topMask);
-
-        var icon:egret.Bitmap = this.createBitmapByName("egretIcon");
-        this.addChild(icon);
-        icon.scaleX = 0.55;
-        icon.scaleY = 0.55;
-        icon.anchorOffsetX = icon.width / 2;
-        icon.anchorOffsetY = icon.height / 2;
-        icon.x = stageW / 2;
-        icon.y = stageH / 2 - 60;
-
-        var colorLabel:egret.TextField = new egret.TextField();
-        colorLabel.textColor = 0xffffff;
-        colorLabel.textAlign = "center";
-        colorLabel.text = "Hello Egret";
-        colorLabel.size = 20;
-        colorLabel.x = stageW - colorLabel.width >> 1;
-        colorLabel.y = (stageH - colorLabel.height >> 1) + 50;
-        this.addChild(colorLabel);
-
-        var textfield:egret.TextField = new egret.TextField();
-        this.addChild(textfield);
-        textfield.alpha = 0;
-        textfield.width = stageW;
-        textfield.textAlign = egret.HorizontalAlign.CENTER;
-        textfield.x = 0;
-        textfield.y = stageH / 2 + 100;
-        this.textfield = textfield;
-
-        //根据name关键字，异步获取一个json配置文件，name属性请参考resources/resource.json配置文件的内容。
-        // Get asynchronously a json configuration file according to name keyword. As for the property of name please refer to the configuration file of resources/resource.json.
-        RES.getResAsync("description", this.startAnimation, this)
+        var te = new MapTest();
+        this.addChild(te);
         
+        return;
+        // var dicH:number = 0;
+        // var dicV:number = 0;
+        // var btnJ:number = 0;
+        // var btnA:number = 0;
         
-        var dicH:number = 0;
-        var dicV:number = 0;
-        var btnJ:number = 0;
-        var btnA:number = 0;
-        
-        var ff = function (d):boolean {
-            switch (dicH) {
-                case one.Direction.LEFT:
-                    colorLabel.x--;
-                    break;
-                case one.Direction.RIGHT:
-                    colorLabel.x++;
-                    break;
-                default:
-                    break;
-            }
-            switch (dicV) {
-                case one.Direction.UP:
-                    colorLabel.y--;
-                    break;
-                case one.Direction.DOWN:
-                    colorLabel.y++;
-                    break;
-                default:
-                    break;
-            }
-            switch (btnJ) {
-                case one.BUTTONS.JUMP:
-                    icon.y -= 2;
-                    break;
-                default:
-                    break;
-            }
-            switch (btnA) {
-                case one.BUTTONS.ATTACK:
-                    icon.y++;
-                    break;
-                default:
-                    break;
-            }
-            return false;
-        };
-        var isRunning:boolean = false;
-        var f = function (e:egret.Event) {
-            var dataArr = e.data;
-            dicH = dataArr[0];
-            dicV = dataArr[1];
+        // var ff = function (d):boolean {
+        //     colorLabel.x += dicH;
+        //     colorLabel.y += dicV;
             
-            btnA = dataArr[2];
-            btnJ = dataArr[3];
+        //     switch (btnJ) {
+        //         case 1:
+        //             icon.y -= 2;
+        //             break;
+        //         default:
+        //             break;
+        //     }
+        //     switch (btnA) {
+        //         case 1:
+        //             icon.y++;
+        //             break;
+        //         default:
+        //             break;
+        //     }
+        //     return false;
+        // };
+        // var isRunning:boolean = false;
+        // var f = function (e:one.OptionEvent) {
+        //     dicH = 0;
+        //     dicV = 0;
+        //     var directions = e.directions;
+        //     for (var i:number = 0; i < directions.length; i++) {
+        //         switch (directions[i]) {
+        //             case one.Direction.LEFT:
+        //                 dicH = -1;
+        //                 break;
+        //             case one.Direction.RIGHT:
+        //                 dicH = 1;
+        //                 break;
+        //             case one.Direction.UP:
+        //                 dicV = -1;
+        //                 break;
+        //             case one.Direction.DOWN:
+        //                 dicV = 1;
+        //                 break;
+        //         }
+        //     }
             
-            if (dicH == one.Direction.NONE && dicV == one.BUTTONS.NONE
-            && btnA == one.Direction.NONE && btnJ == one.BUTTONS.NONE) {
-                isRunning = false;
-                egret.stopTick(ff, this);
-            }
-            else if (!isRunning) {
-                isRunning = true;
-                egret.startTick(ff, this);
-            }
+        //     btnA = 0;
+        //     btnJ = 0;
+        //     var buttons = e.buttons;
+        //     for (i = 0; i < buttons.length; i++) {
+        //         switch (buttons[i]) {
+        //             case one.BUTTONS[0]:
+        //                 btnA = 1;
+        //                 break;
+        //             case one.BUTTONS[1]:
+        //                 btnJ = 1;
+        //                 break;
+        //         }
+        //     }
+                
             
-            console.log(dataArr);
-        }
+        //     if (dicH == 0 && dicV == 0 && btnA == 0 && btnJ == 0) {
+        //         isRunning = false;
+        //         egret.stopTick(ff, this);
+        //     }
+        //     else if (!isRunning) {
+        //         isRunning = true;
+        //         egret.startTick(ff, this);
+        //     }
+        // }
+        // one.OptionCtr.getInstance().init(this);
         
-        one.KeyBoardCtr.getInstance().init();
-        one.TouchCtr.getInstance().init(this);
-        
-        one.KeyBoardCtr.getInstance().addEventListener(egret.Event.CHANGE, f, this);
-        one.TouchCtr.getInstance().addEventListener(egret.Event.CHANGE, f, this);
+        // one.OptionCtr.getInstance().addEventListener(one.OptionEvent.OPTION_CHANGE, f, this);
     }
 
-    /**
-     * 根据name关键字创建一个Bitmap对象。name属性请参考resources/resource.json配置文件的内容。
-     * Create a Bitmap object according to name keyword.As for the property of name please refer to the configuration file of resources/resource.json.
-     */
-    private createBitmapByName(name:string):egret.Bitmap {
-        var result:egret.Bitmap = new egret.Bitmap();
-        var texture:egret.Texture = RES.getRes(name);
-        result.texture = texture;
-        return result;
-    }
-
-    /**
-     * 描述文件加载成功，开始播放动画
-     * Description file loading is successful, start to play the animation
-     */
-    private startAnimation(result:Array<any>):void {
-        var self:any = this;
-
-        var parser:egret.HtmlTextParser = new egret.HtmlTextParser();
-        var textflowArr:Array<Array<egret.ITextElement>> = [];
-        for (var i:number = 0; i < result.length; i++) {
-            textflowArr.push(parser.parser(result[i]));
-        }
-
-        var textfield:egret.TextField = self.textfield;
-        var count:number = -1;
-        var change:Function = function () {
-            count++;
-            if (count >= textflowArr.length) {
-                count = 0;
-            }
-            var lineArr = textflowArr[count];
-
-            self.changeDescription(textfield, lineArr);
-
-            var tw = egret.Tween.get(textfield);
-            tw.to({"alpha": 1}, 200);
-            tw.wait(2000);
-            tw.to({"alpha": 0}, 200);
-            tw.call(change, self);
-        };
-
-        change();
-    }
-
-    /**
-     * 切换描述内容
-     * Switch to described content
-     */
-    private changeDescription(textfield:egret.TextField, textFlow:Array<egret.ITextElement>):void {
-        textfield.textFlow = textFlow;
-    }
 }
 
 
